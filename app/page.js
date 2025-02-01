@@ -1,12 +1,13 @@
 "use client"
-import Foot from "@/components/Foot";
-import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import ImageSlider from "@/components/ImageSlider";
 import FAQ from "@/components/Faq";
 import Link from "next/link";
+import { Context } from '@/MyContext';
+import { useContext } from 'react';
 
 export default function Home() {
+    const {  user } = useContext(Context);
 
   return (
     <>
@@ -16,12 +17,19 @@ export default function Home() {
           Make your site awesome with
           <span className="text-blue-600 font-extrabold"> Chat Bot Tarun</span>
         </p>
-        <Link
+        {user ? <Link
           href="/companysetup"
           className="px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-green-400 to-green-500 rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
         >
           <span className="text-white font-bold"> Go to Setup</span>
-        </Link>
+        </Link>:
+        <Link
+        href="/login"
+        className="px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-green-400 to-green-500 rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
+      >
+        <span className="text-white font-bold"> Login</span>
+      </Link>
+        }
 
         <FAQ />
       </div>
