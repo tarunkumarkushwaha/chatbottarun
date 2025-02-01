@@ -1,4 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+🚀 Chatbot Onboarding UI
+A modern, user-friendly onboarding interface for setting up a chatbot for businesses. The UI covers user registration, organization setup, chatbot training, and integration testing.
+
+📌 Features
+1️⃣ User Registration
+Users enter their name, email, and password.
+Option to continue with Google.
+Email verification with a one-time code to ensure genuine registrations.
+2️⃣ Organization Setup
+Users enter company name, website URL, and company description.
+Bonus: Auto-fetch meta description from the website.
+UI displays detected webpages:
+Scraped pages ✅
+Pending pages ⏳
+Failed pages ❌
+Users can click any page to see scraped data chunks.
+Users can wait for chatbot training completion or proceed to the next step.
+3️⃣ Chatbot Integration & Testing
+🔹 Test Chatbot
+"Test chatbot" button opens the client’s website with a dummy chatbot at the bottom right.
+Topbar: "Chatbot not working as intended? Share feedback".
+🔹 Integration Options
+Users can integrate the chatbot via two methods:
+Copy-Paste Code – Instructions to insert a script in the <head> tag.
+Email Instructions – Mail chatbot integration steps to a developer.
+🔹 Test Integration
+Clicking "Test Integration" checks for successful setup.
+🎉 Success UI with confetti animation 🎉
+"Explore Admin Panel" button.
+"Start talking to your chatbot" button.
+Social media sharing buttons.
+If integration fails:
+Display an alternate UI guiding users on troubleshooting.
 
 ## Getting Started
 
