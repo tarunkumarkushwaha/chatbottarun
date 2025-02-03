@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import Loader from "@/components/Loader";
 import UiInput from "@/components/UIcomponents/UiInput";
 import { toast } from "react-toastify";
+import Draggable from "react-draggable";
 
 export default function ChatbotIntegration() {
   const [email, setemail] = useState("")
@@ -16,6 +17,7 @@ export default function ChatbotIntegration() {
   const router = useRouter()
 
   const { user } = useContext(Context);
+  const nodeRef = useRef(null);
 
   useEffect(() => {
     if (!user) {
@@ -92,24 +94,35 @@ export default function ChatbotIntegration() {
 
   return (
     <div className="p-4 sm:p-6 rounded-lg max-w-4xl mx-auto space-y-4 sm:space-y-6 w-full bg-gray-50 shadow-md">
+     
+
+     <>
       {showTopbar && (
-        <div className="fixed top-20 right-10 p-10 flex gap-2 justify-center items-center flex-col bg-cyan-100 border border-gray-300 rounded-lg z-50">
-        <button onClick={()=>setShowTopbar(false)} className="text-black font-bold absolute top-2 right-5">X</button>
-        Chatbot not working as intended? <a className=" underline text-blue-600" href="#">Share feedback</a>
-      </div>
+        <Draggable nodeRef={nodeRef} handle=".drag-handle">
+          <div ref={nodeRef} className="fixed drag-handle transform transition-all duration-300 animate-modalEnter top-20 right-10 p-10 flex gap-2 justify-center items-center flex-col bg-cyan-100 border border-gray-300 rounded-lg z-50 cursor-move">
+          
+            <button onClick={() => setShowTopbar(false)} className="text-black font-bold absolute top-2 right-5">X</button>
+            Chatbot not working as intended? <a className="underline text-blue-600" href="#">Share feedback</a>
+          </div>
+        </Draggable>
       )}
 
       {showChatbot && (
-        <div className="fixed top-20 right-10 p-10 flex gap-2 flex-col bg-cyan-400 border border-gray-300 rounded-lg z-50">
-          <button onClick={()=>setShowChatbot(false)} className="text-white absolute top-2 right-5">X</button>
-          <UiInput />
-          <button className="w-full inline-block px-6 py-3 bg-gradient-to-r from-violet-500 to-violet-700 hover:from-violet-600 hover:to-violet-800 text-white rounded-lg font-medium transition duration-300">
-            ask something
-          </button>
-        </div>
+        <Draggable nodeRef={nodeRef} handle=".drag-handle">
+          <div ref={nodeRef} className="fixed top-20 drag-handle transform transition-all duration-300 animate-modalEnter right-10 p-10 flex gap-2 flex-col bg-cyan-200 border border-gray-300 rounded-lg z-50 cursor-move">
+        
+            <button onClick={() => setShowChatbot(false)} className="text-white absolute top-2 right-5">X</button>
+            <input type="text" placeholder="Type something..." className="p-2 border rounded-lg w-full" />
+            <button className="w-full inline-block px-6 py-3 bg-gradient-to-r from-violet-500 to-violet-700 hover:from-violet-600 hover:to-violet-800 text-white rounded-lg font-medium transition duration-300">
+              Ask something
+            </button>
+          </div>
+        </Draggable>
       )}
+    </>
 
-      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md space-y-4 w-full">
+
+      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md space-y-4 w-full transform transition-all duration-300 animate-modalEnter">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <button
             onClick={() => {

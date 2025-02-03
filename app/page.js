@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <ImageSlider />
-      <div className="flex flex-col justify-center items-center gap-6 py-10 px-6">
+      <div className="flex flex-col justify-center items-center gap-6 py-10 px-6 transform transition-all duration-300 animate-modalEnter">
         <p className="p-6 text-center text-xl font-semibold text-gray-800 bg-gradient-to-r from-gray-100 to-gray-200 rounded-xl shadow-lg max-w-3xl mx-auto">
           Make your site awesome with
           <span className="text-blue-600 font-extrabold"> Chat Bot Tarun</span>

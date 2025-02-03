@@ -39,4 +39,12 @@ body {
   }
 }
 
+@keyframes modalEnter {
+  from { transform: scale(0.9); }
+  to { transform: scale(1);  }
+}
+
+.animate-modalEnter {
+  animation: modalEnter 0.3s ease-out;
+}
 

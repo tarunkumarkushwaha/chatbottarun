@@ -23,7 +23,7 @@ const Login = () => {
   return (
     <>
       {/* <Navbar /> */}
-      <div className="bg-slate-500/60 relative smooth-entry py-10 flex justify-center items-center flex-col min-h-screen">
+      <div className="bg-slate-500/60 relative smooth-entry transform transition-all duration-300 animate-modalEnter py-10 flex justify-center items-center flex-col min-h-screen">
         <section className="w-full flex flex-col items-center justify-center px-6  lg:py-0">
           <div className="w-full bg-white rounded-lg shadow dark:border sm:max-w-md xl:p-0 bg-green-300/30">
             <div className="p-6 space-y-4 sm:p-8">

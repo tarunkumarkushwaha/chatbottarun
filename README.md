@@ -13,6 +13,7 @@ Dummy Email verification with a one-time code. Just Click verify to continue.
 # 2️. Organization Setup
 Users can enter company name, website URL, and company description.
 # Auto-fetch meta description from the website.
+implemented an puppeteer to fetch metadata from any site.
 UI displays detected webpages:
 Scraped pages 
 Pending pages 
@@ -34,9 +35,3 @@ Clicking "Test Integration" checks for successful setup.
 "Explore Admin Panel" button.
 "Start talking to your chatbot" button.
 Social media sharing buttons.
-
-## Getting Started
-
-First, run the development server:
-
-`every software dev knows`
