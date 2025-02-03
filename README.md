@@ -1,5 +1,6 @@
 # Live link
 https://chatbottarun.vercel.app/
+# Note : backend works only on local server due to limitation on vercel deployment.
 
 # Chatbot Onboarding UI
 The UI covers user registration, organization setup, chatbot training, and integration testing. i tried implementing as much i can in short period of time.
