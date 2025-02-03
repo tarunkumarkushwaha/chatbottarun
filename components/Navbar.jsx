@@ -30,7 +30,7 @@ const Navbar = () => {
     return (
         <>
             <header className="sticky top-0 z-20">
-                <nav className="navColor sticky top-0 z-20 px-4 md:px-auto min-h-20">
+                <nav className="navColor px-4 md:px-auto min-h-20">
                     <button
                         className="absolute top-5 left-4 md:hidden flex duration-200"
                         onClick={() => setmenu(!menu)}

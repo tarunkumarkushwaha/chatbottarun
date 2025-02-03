@@ -13,7 +13,7 @@ const FAQ = () => {
     <div className="p-12 w-[96%] rounded-md my-5 bg-gradient-to-r from-blue-100 to-blue-200">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-800">Frequently Asked Questions</h2>
-        <p className="text-lg text-gray-600">Find answers to the most common questions about our laundry services.</p>
+        <p className="text-lg text-gray-600">Find answers to the most common questions about our services.</p>
       </div>
 
       <div className=" rounded-md mx-auto">

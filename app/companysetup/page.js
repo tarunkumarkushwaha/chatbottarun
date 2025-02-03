@@ -8,7 +8,7 @@ import Loader from "@/components/Loader";
 import { toast } from "react-toastify";
 import UiInput from "@/components/UIcomponents/UiInput";
 
-const dummyPages = [
+const ExtractedPages = [
   { url: "https://tarunkushwahaportfolio.netlify.app/", status: "Scraped", chunks: ["section 1", "Section 2"] },
   { url: "https://tarunkushwahaportfolio.netlify.app/page2", status: "Pending", chunks: [] },
   { url: "https://tarunkushwahaportfolio.netlify.app/page3", status: "Scraped", chunks: ["Chunk A", "Chunk B", "Chunk C"] },
@@ -19,6 +19,11 @@ const CompanySetup = () => {
   const [LoadingMeta, setLoadingMeta] = useState(false);
   const [selectedPage, setSelectedPage] = useState(null);
   const [metaDescription, setMetaDescription] = useState("");
+  const [ExtractedPages, setExtractedPages] = useState([
+    { url: "https://tarunkushwahaportfolio.netlify.app/", status: "Scraped", chunks: ["section 1", "Section 2"] },
+    { url: "https://tarunkushwahaportfolio.netlify.app/page2", status: "Pending", chunks: [] },
+    { url: "https://tarunkushwahaportfolio.netlify.app/page3", status: "Scraped", chunks: ["Chunk A", "Chunk B", "Chunk C"] },
+  ]);
   const [url, setUrl] = useState("");
 
   const router = useRouter()
@@ -35,6 +40,7 @@ const CompanySetup = () => {
       const response = await fetch(`api/fetchMeta?url=${encodeURIComponent(url)}`);
       const data = await response.json();
       setMetaDescription(data.description);
+      setExtractedPages([{ url: data.url, status: "scrapped", chunks: data.chunks }])
       setLoadingMeta(false)
       toast.success("data fetched")
     } catch (error) {
@@ -88,7 +94,7 @@ const CompanySetup = () => {
       <div className="bg-white shadow rounded-lg p-6">
         <h2 className="text-2xl font-semibold mb-4 text-indigo-600">Scraped Webpages</h2>
         {LoadingMeta ? <div className="flex justify-center items-center mt-4"> <Loader /> </div> : <ul className="space-y-3">
-          {dummyPages.map((page, index) => (
+          {ExtractedPages.map((page, index) => (
             <li
               key={index}
               className="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 transition duration-300"
@@ -108,9 +114,9 @@ const CompanySetup = () => {
 
       {/* Modal */}
       {selectedPage && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 smooth-entry">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 animate-modalEnter">
-            <h3 className="mb-4 text-indigo-600">Data Chunks for {selectedPage.url}</h3>
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4 smooth-entry">
+          <div className="bg-white overflow-y-auto max-h-[80vh] rounded-2xl shadow-2xl w-full max-w-md p-6 transform transition-all duration-300 animate-modalEnter">
+            <h3 className="mb-4 text-center text-blue-600">Data Chunks for {selectedPage.url}</h3>
             <ul className="space-y-3">
               {selectedPage.chunks.map((chunk, index) => (
                 <li
@@ -135,6 +141,7 @@ const CompanySetup = () => {
           </div>
         </div>
       )}
+
 
 
       <div className="mt-6 flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-4"> {/* Improved spacing */}
